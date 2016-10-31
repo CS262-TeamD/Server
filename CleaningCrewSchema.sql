@@ -92,7 +92,8 @@ INSERT INTO Task VALUES (5, 2, 'Turn off lights.', TRUE);
 INSERT INTO Task VALUES (6, 2, 'Feed Chris Wierenga.', FALSE);
 
 
---Useful sample queries
+-----USEFUL SAMPLE QUERIES-----
+
 --See description all of Roy's tasks
 SELECT description, isComplete
 FROM Task, Assignment, Person
