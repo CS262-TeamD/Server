@@ -15,11 +15,11 @@ DROP TABLE IF EXISTS Building;
 
 -- Create the schema.
 CREATE TABLE Person (
-ID varchar(50) PRIMARY KEY, --ex. cjk45
-Name varchar(100) NOT NULL, -- Cotter Koopman
-Email varchar(50) NOT NULL,-- cjk45@students.calvin.edu
-Phonenumber varchar(20), -- 6167529317 we should strip these of - . () characters
-Role varchar(20) NOT NULL --Employee (could use boolean for binary values of employer, supervisor?)
+	ID varchar(50) PRIMARY KEY, --ex. cjk45
+	Name varchar(100) NOT NULL, -- Cotter Koopman
+	Email varchar(50) NOT NULL,-- cjk45@students.calvin.edu
+	Phonenumber varchar(20), -- 6167529317 we should strip these of - . () characters
+	Role varchar(20) NOT NULL --Employee (could use boolean for binary values of employer, supervisor?)
 );
 
 CREATE TABLE Building (
@@ -30,14 +30,14 @@ CREATE TABLE Building (
 
 CREATE TABLE Room (
 	ID integer PRIMARY KEY,
-BuildingID integer REFERENCES Building(ID) NOT NULL,
-RoomNumber integer NOT NULL
+	BuildingID integer REFERENCES Building(ID) NOT NULL,
+	RoomNumber integer NOT NULL
 	);
 
 --Could be thought of as "PersonRoom" table (like PlayerGame)
 CREATE TABLE Assignment (
 	ID integer PRIMARY KEY,
-	RoomID integer REFERENCES Room(ID) NOT NULL,
+	TaskID integer REFERENCES Task(ID) NOT NULL,
 	PersonID varchar(50) REFERENCES Person(ID) NOT NULL,
 	Comment varchar(1000), --entire comment text stored here?
 	CompleteTime time --should be automatically timestamped
@@ -45,7 +45,7 @@ CREATE TABLE Assignment (
 
 CREATE TABLE Task (
 	ID integer PRIMARY KEY,
-	AssignmentID integer REFERENCES Assignment(ID),
+	RoomID integer REFERENCES Room(ID),
 	Description varchar(50), --What the Person will see
 	isComplete boolean NOT NULL--true for done
 	);
@@ -79,9 +79,9 @@ INSERT INTO Room VALUES (4, 3, 253); --262 classroom
 INSERT INTO Room VALUES (5, 4, 354); --UNIX Lab
 INSERT INTO Room VALUES (6, 5, 110); --DV 110
 
-INSERT INTO Assignment VALUES (0, 3, 'cjk45', NULL, '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (0, 3, 'cjp27', NULL, '2016-06-28 13:20:00');
 INSERT INTO Assignment VALUES (1, 4, 'cjp27', 'Wow, there is dust everywhere, yogurt spilled on the computer, and I H8 CLEEN KREW written on the board. Really dissapointed in your work ethic. -Zach', '2016-06-28 13:20:00');
-INSERT INTO Assignment VALUES (2, 5, 'rga6', 'Chris likes the Buffalo Wrap from Knollcrest.', NULL); --Roy still needs to clean the UNIX lab
+INSERT INTO Assignment VALUES (2, 5, 'cjp27', 'Chris likes the Buffalo Wrap from Knollcrest.', NULL); --Roy still needs to clean the UNIX lab
 
 INSERT INTO Task VALUES (0, 1, 'Clean the yogurt.', FALSE); -- Next three tasks on same assignment
 INSERT INTO Task VALUES (1, 1, 'Erase the board.', FALSE);
@@ -111,10 +111,11 @@ AND Task.AssignmentID = Assignment.ID;
 
 --See which buildings Caleb is assigned tasks in
 SELECT Building.name
-FROM Building, Assignment, Room, Person
+FROM Building, Assignment, Task, Room, Person
 WHERE Person.name = 'Caleb Postma'
 AND Person.ID = Assignment.PersonId
-AND Assignment.RoomID = Room.ID
+AND Assignment.TaskID = Task.ID
+AND Task.RoomID = Room.ID
 AND Room.BuildingID = Building.ID;
 
 --See how many employees are in the system
