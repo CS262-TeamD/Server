@@ -34,6 +34,13 @@ CREATE TABLE Room (
 	RoomNumber integer NOT NULL
 	);
 
+CREATE TABLE Task (
+	ID integer PRIMARY KEY,
+	RoomID integer REFERENCES Room(ID),
+	Description varchar(50), --What the Person will see
+	isComplete boolean NOT NULL--true for done
+	);
+
 --Could be thought of as "PersonRoom" table (like PlayerGame)
 CREATE TABLE Assignment (
 	ID integer PRIMARY KEY,
@@ -41,13 +48,6 @@ CREATE TABLE Assignment (
 	PersonID varchar(50) REFERENCES Person(ID) NOT NULL,
 	Comment varchar(1000), --entire comment text stored here?
 	CompleteTime time --should be automatically timestamped
-	);
-
-CREATE TABLE Task (
-	ID integer PRIMARY KEY,
-	RoomID integer REFERENCES Room(ID),
-	Description varchar(50), --What the Person will see
-	isComplete boolean NOT NULL--true for done
 	);
 
 -- Allow Persons to select data from the tables.
