@@ -79,10 +79,6 @@ INSERT INTO Room VALUES (4, 3, 253); --262 classroom
 INSERT INTO Room VALUES (5, 4, 354); --UNIX Lab
 INSERT INTO Room VALUES (6, 5, 110); --DV 110
 
-INSERT INTO Assignment VALUES (0, 3, 'cjp27', NULL, '2016-06-28 13:20:00');
-INSERT INTO Assignment VALUES (1, 4, 'cjp27', 'Wow, there is dust everywhere, yogurt spilled on the computer, and I H8 CLEEN KREW written on the board. Really dissapointed in your work ethic. -Zach', '2016-06-28 13:20:00');
-INSERT INTO Assignment VALUES (2, 5, 'cjp27', 'Chris likes the Buffalo Wrap from Knollcrest.', NULL); --Roy still needs to clean the UNIX lab
-
 INSERT INTO Task VALUES (0, 1, 'Clean the yogurt.', FALSE); -- Next three tasks on same assignment
 INSERT INTO Task VALUES (1, 1, 'Erase the board.', FALSE);
 INSERT INTO Task VALUES (2, 1, 'Dust entire room.', FALSE);
@@ -91,6 +87,9 @@ INSERT INTO Task VALUES (4, 2, 'Make sure all computers are logged out.', FALSE)
 INSERT INTO Task VALUES (5, 2, 'Turn off lights.', TRUE);
 INSERT INTO Task VALUES (6, 2, 'Feed Chris Wierenga.', FALSE);
 
+INSERT INTO Assignment VALUES (0, 3, 'cjp27', NULL, '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (1, 4, 'cjp27', 'Wow, there is dust everywhere, yogurt spilled on the computer, and I H8 CLEEN KREW written on the board. Really dissapointed in your work ethic. -Zach', '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (2, 5, 'cjp27', 'Chris likes the Buffalo Wrap from Knollcrest.', NULL); --Roy still needs to clean the UNIX lab
 
 -----USEFUL SAMPLE QUERIES-----
 
@@ -99,15 +98,15 @@ SELECT description, isComplete
 FROM Task, Assignment, Person
 WHERE Person.name = 'Roy Adams'
 AND Person.ID = Assignment.PersonID
-AND Assignment.ID = Task.AssignmentID;
+AND Assignment.TaskID = Task.ID;
 
 --See all unchecked tasks in the Science Building
 SELECT description
-FROM Task, Assignment, Building
+FROM Task, Assignment, Building, Room
 WHERE isComplete = FALSE
 AND Building.name = 'Science Building'
-AND Building.ID = Assignment.RoomID
-AND Task.AssignmentID = Assignment.ID;
+AND Building.ID = Room.BuildingID
+AND Task.RoomID = Room.ID;
 
 --See which buildings Caleb is assigned tasks in
 SELECT Building.name
