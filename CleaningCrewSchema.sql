@@ -63,33 +63,83 @@ INSERT INTO Person VALUES ('cjp27', 'Caleb Postma', ' cjp27@students.calvin.edu'
 INSERT INTO Person VALUES ('pno2', 'Peter Oostema', ' pno2@students.calvin.edu', '6165260230', 'employee');
 INSERT INTO Person VALUES ('rga6', 'Roy Adams', ' rga6@students.calvin.edu', NULL, 'employee');
 INSERT INTO Person VALUES ('cjk45', 'Cotter Koopman', ' cjk45@students.calvin.edu', '6167529317', 'employee');
+INSERT INTO Person VALUES ('aaa1', 'John Doe', ' aaa1@students.calvin.edu', '1111111111', 'employee');
+INSERT INTO Person VALUES ('bbb2', 'Anna Smith', ' bbb2@students.calvin.edu', NULL, 'employee');
+INSERT INTO Person VALUES ('ccc3', 'Andrew Jackson', ' ccc3@students.calvin.edu', '2222222222', 'employee');
+INSERT INTO Person VALUES ('ddd4', 'Abraham Lincoln', ' ddd4@students.calvin.edu', NULL, 'employee');
+INSERT INTO Person VALUES ('eee5', 'Kyle Walker', ' eee5@students.calvin.edu', '3333333333', 'employee');
 
-INSERT INTO Building VALUES (0, 'Hiemega Hall', 'HH');
+INSERT INTO Building VALUES (0, 'Physical Plant', 'PP');
 INSERT INTO Building VALUES (1, 'Hekman Library', 'HL');
 INSERT INTO Building VALUES (2, 'Commons Annex', 'CA');
 INSERT INTO Building VALUES (3, 'North Hall', 'NH');
 INSERT INTO Building VALUES (4, 'Science Building', 'SB');
 INSERT INTO Building VALUES (5, 'DeVries Hall', 'DH');
 
-INSERT INTO Room VALUES (0, 0, 101); --HH101
-INSERT INTO Room VALUES (1, 0, 201); --HH201
-INSERT INTO Room VALUES (2, 1, 110); --HL110
-INSERT INTO Room VALUES (3, 2, 017); --Dialogue Office
-INSERT INTO Room VALUES (4, 3, 253); --262 classroom
-INSERT INTO Room VALUES (5, 4, 354); --UNIX Lab
-INSERT INTO Room VALUES (6, 5, 110); --DV 110
+INSERT INTO Room VALUES (0, 0, 101);
+INSERT INTO Room VALUES (1, 0, 201);
+INSERT INTO Room VALUES (2, 0, 110);
+INSERT INTO Room VALUES (3, 0, 017);
+INSERT INTO Room VALUES (4, 0, 253);
+INSERT INTO Room VALUES (5, 0, 354);
+INSERT INTO Room VALUES (6, 0, 110);
 
-INSERT INTO Task VALUES (0, 1, 'Clean the yogurt.', FALSE); -- Next three tasks on same assignment
-INSERT INTO Task VALUES (1, 1, 'Erase the board.', FALSE);
-INSERT INTO Task VALUES (2, 1, 'Dust entire room.', FALSE);
-INSERT INTO Task VALUES (3, 0, 'Vaccuum.', TRUE);
-INSERT INTO Task VALUES (4, 2, 'Make sure all computers are logged out.', FALSE);
-INSERT INTO Task VALUES (5, 2, 'Turn off lights.', TRUE);
-INSERT INTO Task VALUES (6, 2, 'Feed Chris Wierenga.', FALSE);
+INSERT INTO Task VALUES (0, 0, 'Clean Glass', FALSE);
+INSERT INTO Task VALUES (1, 0, 'Dust', FALSE);
+INSERT INTO Task VALUES (2, 0, 'Vacuum', FALSE);
 
-INSERT INTO Assignment VALUES (0, 3, 'cjp27', NULL, '2016-06-28 13:20:00');
-INSERT INTO Assignment VALUES (1, 4, 'cjp27', 'Wow, there is dust everywhere, yogurt spilled on the computer, and I H8 CLEEN KREW written on the board. Really dissapointed in your work ethic. -Zach', '2016-06-28 13:20:00');
-INSERT INTO Assignment VALUES (2, 5, 'cjp27', 'Chris likes the Buffalo Wrap from Knollcrest.', NULL); --Roy still needs to clean the UNIX lab
+INSERT INTO Task VALUES (3, 1, 'Dust Ledges and Counters', TRUE);
+INSERT INTO Task VALUES (4, 1, 'Trash and Recycling', FALSE);
+INSERT INTO Task VALUES (5, 1, 'Vacuum', FALSE);
+
+INSERT INTO Task VALUES (6, 3, 'Trash and Recycling', TRUE);
+INSERT INTO Task VALUES (7, 3, 'Dust', FALSE);
+INSERT INTO Task VALUES (8, 3, 'Vacuum', FALSE);
+
+INSERT INTO Task VALUES (9, 4, 'Disinfect Tables and Chairs', FALSE);
+INSERT INTO Task VALUES (10, 4, 'Clean Sink and Counters', FALSE);
+INSERT INTO Task VALUES (11, 4, 'Trash and Recycling', FALSE);
+
+INSERT INTO Task VALUES (12, 5, 'Dust', TRUE);
+INSERT INTO Task VALUES (13, 5, 'Sweep/Wet Mop', FALSE);
+INSERT INTO Task VALUES (14, 5, 'Trash and Recycling', FALSE);
+
+INSERT INTO Task VALUES (15, 6, 'Trash and Recycling', TRUE);
+INSERT INTO Task VALUES (16, 6, 'Dust', FALSE);
+INSERT INTO Task VALUES (17, 6, 'Vacuum', FALSE);
+
+INSERT INTO Task VALUES (18, 2, 'Sweep/Wet Mop', TRUE);
+INSERT INTO Task VALUES (19, 2, 'Disinfect Toilets/Urinals & Sinks', FALSE);
+INSERT INTO Task VALUES (20, 2, 'Clean Glass', FALSE);
+
+
+INSERT INTO Assignment VALUES (0, 0, 'cjp27', 'Make sure you vacuum in all the corners!', '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (1, 1, 'cjp27', 'Make sure you vacuum in all the corners!', '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (2, 2, 'cjp27', 'Make sure you vacuum in all the corners!', '2016-06-28 13:20:00');
+
+INSERT INTO Assignment VALUES (3, 0, 'cjp27', 'The windowsills were a bit dusty last time, make sure you get all of them.', '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (4, 1, 'cjp27', 'The windowsills were a bit dusty last time, make sure you get all of them.', '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (5, 2, 'cjp27', 'The windowsills were a bit dusty last time, make sure you get all of them.', '2016-06-28 13:20:00');
+
+INSERT INTO Assignment VALUES (6, 0, 'cjp27', 'No comment.', '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (7, 1, 'cjp27', 'No comment.', '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (8, 2, 'cjp27', 'No comment.', '2016-06-28 13:20:00');
+
+INSERT INTO Assignment VALUES (9, 0, 'cjp27', 'Nice job!', '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (10, 1, 'cjp27', 'Nice job!', '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (11, 2, 'cjp27', 'Nice job!', '2016-06-28 13:20:00');
+
+INSERT INTO Assignment VALUES (12, 0, 'cjp27', 'Please wash all the dishes in the sink when you clean it.', '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (13, 1, 'cjp27', 'Please wash all the dishes in the sink when you clean it.', '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (14, 2, 'cjp27', 'Please wash all the dishes in the sink when you clean it.', '2016-06-28 13:20:00');
+
+INSERT INTO Assignment VALUES (15, 0, 'cjp27', 'Looks good, keep up the good work!', '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (16, 1, 'cjp27', 'Looks good, keep up the good work!', '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (17, 2, 'cjp27', 'Looks good, keep up the good work!', '2016-06-28 13:20:00');
+
+INSERT INTO Assignment VALUES (18, 0, 'cjp27', 'Sorry the bathrooms are so nasty today...', '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (19, 1, 'cjp27', 'Sorry the bathrooms are so nasty today...', '2016-06-28 13:20:00');
+INSERT INTO Assignment VALUES (20, 2, 'cjp27', 'Sorry the bathrooms are so nasty today...', '2016-06-28 13:20:00');
 
 -----USEFUL SAMPLE QUERIES-----
 
